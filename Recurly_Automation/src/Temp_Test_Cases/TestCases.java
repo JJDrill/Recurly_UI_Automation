@@ -53,6 +53,8 @@ public class TestCases {
         
         Menus menu = new Menus(driver);
         Customers_Accounts accounts = menu.Nav_Customers_Accounts();
+        String acct_stat_all = accounts.Get_Account_Status(Customers_Accounts.Account_Status_Types.All);
+        
         Customers_Subscriptions subscriptions = menu.Nav_Customers_Subscriptions();
         Customers_Invoices invoices = menu.Nav_Customers_Invoices();
         Customers_Transactions transactions = menu.Nav_Customers_Transactions();
