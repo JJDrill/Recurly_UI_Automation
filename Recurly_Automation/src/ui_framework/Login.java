@@ -41,9 +41,11 @@ public class Login {
     }
     
     // Shortcut function to login a user
-    public void loginUser(String userName, String password){
+    public Get_Started loginUser(String userName, String password){
         this.setUserName(userName);
         this.setPassword(password);
         this.clickLogin();
+        
+        return new Get_Started(driver);
     }
 }
