@@ -22,25 +22,23 @@ import ui_framework.*;
 public class TestCases {
     
     public static void main(String[] args) {
-        
-        // Stored my username and pass in the private.properties file
-        Properties props = new Properties();
-        InputStream input;
         String privateUsername = "";
         String privatePassword = "";
         
+        // Stored my username and pass in the private.properties file
+        // so it does not get pushed to Github
         try {
-            input = new FileInputStream("nbproject\\private\\private.properties");
+            Properties props = new Properties();
+            InputStream input = new FileInputStream("nbproject\\private\\private.properties");
             props.load(input);
             privateUsername = props.getProperty("login.username");
             privatePassword = props.getProperty("login.password");
-            
         } catch (FileNotFoundException ex) {
             Logger.getLogger(TestCases.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(TestCases.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
+        
         //Chrome
         Browser browser = new Browser();
         WebDriver driver = browser.Get_Driver(Browser.Browser_Type.CHROME);
@@ -54,10 +52,10 @@ public class TestCases {
         login = null;
         
         Menus menu = new Menus(driver);
-        menu.Nav_Customers_Accounts();
-        menu.Nav_Customers_Subscriptions();
-        menu.Nav_Customers_Invoices();
-        menu.Nav_Customers_Transactions();
+        Customers_Accounts accounts = menu.Nav_Customers_Accounts();
+        Customers_Subscriptions subscriptions = menu.Nav_Customers_Subscriptions();
+        Customers_Invoices invoices = menu.Nav_Customers_Invoices();
+        Customers_Transactions transactions = menu.Nav_Customers_Transactions();
         menu.Nav_LogOut();
         menu = null;
         

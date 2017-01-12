@@ -6,7 +6,6 @@
 package ui_framework;
 
 import org.openqa.selenium.By;
-import static org.openqa.selenium.By.xpath;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -42,23 +41,27 @@ public class Menus {
         driver.findElement(Customers).click();
     }
     
-    public void Nav_Customers_Accounts(){
+    public Customers_Accounts Nav_Customers_Accounts(){
         this.Nav_Customers();
         driver.findElement(Customers_Accounts).click();
+        return new Customers_Accounts(driver);
     }
     
-    public void Nav_Customers_Subscriptions(){
+    public Customers_Subscriptions Nav_Customers_Subscriptions(){
         this.Nav_Customers();
         driver.findElement(Customers_Subscriptions).click();
+        return new Customers_Subscriptions(driver);
     }
     
-    public void Nav_Customers_Invoices(){
+    public Customers_Invoices Nav_Customers_Invoices(){
         this.Nav_Customers();
         driver.findElement(Customers_Invoices).click();
+        return new Customers_Invoices(driver);
     }
     
-    public void Nav_Customers_Transactions(){
+    public Customers_Transactions Nav_Customers_Transactions(){
         this.Nav_Customers();
         driver.findElement(Customers_Transactions).click();
+        return new Customers_Transactions(driver);
     }
 }
