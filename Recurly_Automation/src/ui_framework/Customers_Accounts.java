@@ -5,8 +5,10 @@
  */
 package ui_framework;
 
+import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 /**
  *
@@ -76,6 +78,12 @@ public class Customers_Accounts extends Common_Page_Functions {
             default:
                 return "Error: Property not found";
         }
+    }
+    
+    public int Get_Num_Accounts(){
+        By table = By.xpath("/html/body/div[1]/div[2]/div/div/div[3]/div[2]/div/div[1]/div/div[2]/a");
+        int numAccounts = driver.findElements(table).size();
+        return numAccounts;
     }
     
 }

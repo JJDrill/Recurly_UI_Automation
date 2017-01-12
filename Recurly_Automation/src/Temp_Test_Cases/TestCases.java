@@ -48,13 +48,14 @@ public class TestCases {
         
         driver.get("https://app.recurly.com/login");
         Login login = new Login(driver);
-        Common_Page_Functions started = login.loginUser(privateUsername, privatePassword);
+        Get_Started started = login.loginUser(privateUsername, privatePassword);
         System.out.println(started.Get_Page_Title());
         login = null;
         
         Menus menu = new Menus(driver);
         Customers_Accounts accounts = menu.Nav_Customers_Accounts();
         System.out.println(accounts.Get_Page_Title());
+        System.out.println(accounts.Get_Num_Accounts());
         
         Customers_Subscriptions subscriptions = menu.Nav_Customers_Subscriptions();
         System.out.println(subscriptions.Get_Page_Title());
