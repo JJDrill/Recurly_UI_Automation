@@ -10,22 +10,16 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.openqa.selenium.WebDriver;
+import ui_framework.*;
 
 /**
  *
  * @author J. Drill
  */
-public class NewEmptyJUnitTest {
+public class Simple_Test_Case {
     
-    public NewEmptyJUnitTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
+    public Simple_Test_Case() {
     }
     
     @Before
@@ -40,5 +34,6 @@ public class NewEmptyJUnitTest {
     // The methods must be annotated with annotation @Test. For example:
     //
     // @Test
-    // public void hello() {}
+    // public void hello() {
+    // }
 }
