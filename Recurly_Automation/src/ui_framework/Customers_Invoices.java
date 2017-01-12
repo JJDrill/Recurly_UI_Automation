@@ -5,6 +5,7 @@
  */
 package ui_framework;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -14,8 +15,15 @@ import org.openqa.selenium.WebDriver;
 public class Customers_Invoices {
     WebDriver driver = null;
     
+    // Page Objects
+    By Page_Title = By.className("Page-title");
+    
     // Constructor
     public Customers_Invoices(WebDriver driver){
         this.driver = driver;
+    }
+    
+    public String Get_Page_Title(){
+        return driver.findElement(Page_Title).getText();
     }
 }

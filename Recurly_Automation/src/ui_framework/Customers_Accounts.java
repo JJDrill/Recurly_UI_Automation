@@ -23,6 +23,9 @@ public class Customers_Accounts {
         All, Active, Renewing, Non_Renewing, Future_State_Date, In_Trial, Past_Due, No_Subscription;
     }
     
+    // Page Objects
+    By Page_Title = By.className("Page-title");
+    
     // Page Objects - Status
     By Status_Acct_All      = By.xpath("/html/body/div[1]/div[2]/div/div/div[3]/div[1]/div[1]/div[2]/a[1]/span[3]");
     By Status_Acct_Open     = By.xpath("/html/body/div[1]/div[2]/div/div/div[3]/div[1]/div[1]/div[2]/a[2]/span[3]");
@@ -39,6 +42,10 @@ public class Customers_Accounts {
     // Constructor
     public Customers_Accounts(WebDriver driver){
         this.driver = driver;
+    }
+    
+    public String Get_Page_Title(){
+        return driver.findElement(Page_Title).getText();
     }
     
     public String Get_Account_Status(Account_Status_Types status_type){
