@@ -12,11 +12,18 @@ import org.openqa.selenium.WebDriver;
  *
  * @author J. Drill
  */
-public class Customers_Invoices extends Common_Page_Functions {
+public abstract class Common_Page_Functions {
+    WebDriver driver = null;
+    
+    // Page Objects
+    By Page_Title = By.className("Page-title");
     
     // Constructor
-    public Customers_Invoices(WebDriver driver){
-        super(driver);
+    public Common_Page_Functions(WebDriver driver){
+        this.driver = driver;
     }
     
+    public String Get_Page_Title(){
+        return driver.findElement(Page_Title).getText();
+    }
 }

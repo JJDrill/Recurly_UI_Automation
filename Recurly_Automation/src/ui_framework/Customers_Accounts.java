@@ -12,8 +12,7 @@ import org.openqa.selenium.WebDriver;
  *
  * @author J. Drill
  */
-public class Customers_Accounts {
-    WebDriver driver = null;
+public class Customers_Accounts extends Common_Page_Functions {
     
     public enum Account_Status_Types {
         All, Open, Closed;
@@ -22,9 +21,6 @@ public class Customers_Accounts {
     public enum Subscription_Status_Types {
         All, Active, Renewing, Non_Renewing, Future_State_Date, In_Trial, Past_Due, No_Subscription;
     }
-    
-    // Page Objects
-    By Page_Title = By.className("Page-title");
     
     // Page Objects - Status
     By Status_Acct_All      = By.xpath("/html/body/div[1]/div[2]/div/div/div[3]/div[1]/div[1]/div[2]/a[1]/span[3]");
@@ -41,11 +37,7 @@ public class Customers_Accounts {
     
     // Constructor
     public Customers_Accounts(WebDriver driver){
-        this.driver = driver;
-    }
-    
-    public String Get_Page_Title(){
-        return driver.findElement(Page_Title).getText();
+        super(driver);
     }
     
     public String Get_Account_Status(Account_Status_Types status_type){

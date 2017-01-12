@@ -12,18 +12,11 @@ import org.openqa.selenium.WebDriver;
  *
  * @author J. Drill
  */
-public class Customers_Subscriptions {
-    WebDriver driver = null;
+public class Customers_Subscriptions extends Common_Page_Functions {
     
-    // Page Objects
-    By Page_Title = By.className("Page-title");
-    
-    // Constructor
+// Constructor
     public Customers_Subscriptions(WebDriver driver){
-        this.driver = driver;
+        super(driver);
     }
     
-    public String Get_Page_Title(){
-        return driver.findElement(Page_Title).getText();
-    }
 }
