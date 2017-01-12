@@ -37,6 +37,10 @@ public class Customers_Accounts extends Common_Page_Functions {
     By Status_Sub_PastDue = By.xpath("/html/body/div[1]/div[2]/div/div/div[3]/div[1]/div[2]/div[2]/a[7]/span[3]");
     By Status_Sub_NoSubscription = By.xpath("/html/body/div[1]/div[2]/div/div/div[3]/div[1]/div[2]/div[2]/a[8]/span[3]");
     
+    // Page Objects
+    By Accts_Table = By.xpath("/html/body/div[1]/div[2]/div/div/div[3]/div[2]/div/div[1]/div/div[2]/a");
+    By Accts_Table_Displaying_Tag = By.xpath("/html/body/div[1]/div[2]/div/div/div[3]/div[2]/div/div[2]/div[1]");
+    
     // Constructor
     public Customers_Accounts(WebDriver driver){
         super(driver);
@@ -80,10 +84,13 @@ public class Customers_Accounts extends Common_Page_Functions {
         }
     }
     
-    public int Get_Num_Accounts(){
-        By table = By.xpath("/html/body/div[1]/div[2]/div/div/div[3]/div[2]/div/div[1]/div/div[2]/a");
-        int numAccounts = driver.findElements(table).size();
+    public int Get_Accts_Table_Size(){
+        int numAccounts = driver.findElements(Accts_Table).size();
         return numAccounts;
+    }
+    
+    public String Get_Accts_Table_Tag() {
+        return driver.findElement(Accts_Table_Displaying_Tag).getText();
     }
     
 }

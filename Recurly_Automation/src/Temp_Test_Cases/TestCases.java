@@ -55,7 +55,8 @@ public class TestCases {
         Menus menu = new Menus(driver);
         Customers_Accounts accounts = menu.Nav_Customers_Accounts();
         System.out.println(accounts.Get_Page_Title());
-        System.out.println(accounts.Get_Num_Accounts());
+        System.out.println(accounts.Get_Accts_Table_Size());
+        System.out.println(accounts.Get_Accts_Table_Tag());
         
         Customers_Subscriptions subscriptions = menu.Nav_Customers_Subscriptions();
         System.out.println(subscriptions.Get_Page_Title());
