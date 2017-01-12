@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ui_framework;
+package Temp_Test_Cases;
 
 import org.openqa.selenium.WebDriver;
+import ui_framework.Browser;
 
 /**
  *
