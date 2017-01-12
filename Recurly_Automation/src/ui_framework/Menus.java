@@ -13,18 +13,27 @@ import org.openqa.selenium.WebDriver;
  *
  * @author J. Drill
  */
-public class Menu_Side {
+public class Menus {
     
     WebDriver driver = null;
     
-    // Page Objects
+    // Page Objects - Top
+    By Log_Out = By.linkText("Log Out");
+    
+    // Page Objects - Side
     By Customers = By.xpath("/html/body/div[1]/div[1]/div/div[2]/div[1]/h4/button");
     By Customers_Accounts = By.linkText("Accounts");
     By Customers_Subscriptions = By.linkText("Subscriptions");
     By Customers_Invoices = By.linkText("Invoices");
     By Customers_Transactions = By.linkText("Transactions");
     
-    public Menu_Side(WebDriver driver){
+    // TODO Code in rest of the side menu
+    
+    public void Nav_LogOut(){
+        driver.findElement(Log_Out).click();
+    }
+    
+    public Menus(WebDriver driver){
         this.driver = driver;
     }
     
