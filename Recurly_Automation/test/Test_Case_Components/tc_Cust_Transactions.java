@@ -13,7 +13,7 @@ import ui_framework.Menus;
 public class tc_Cust_Transactions {
     WebDriver driver = null;
     
-    String title = "Transactions";
+    String expectedTitle = "Transactions";
     
     public tc_Cust_Transactions(WebDriver driver) {
         this.driver = driver;
@@ -25,6 +25,6 @@ public class tc_Cust_Transactions {
         Menus menu = new Menus(driver);
         Customers_Transactions transactions = menu.Nav_Customers_Transactions();
         // Valiate
-        assertEquals(title, transactions.Get_Page_Title());
+        assertEquals(expectedTitle, transactions.Get_Page_Title());
     }
 }
