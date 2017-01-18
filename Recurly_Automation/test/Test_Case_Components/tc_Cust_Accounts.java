@@ -37,4 +37,35 @@ public class tc_Cust_Accounts {
         // Validate
         assertEquals(totalAccounts, tableCount);
     }
+    
+    @Test
+    public void verify_Account_Status_Calculations(){
+        Customers_Accounts accounts = new Customers_Accounts(driver);
+        
+        // Verify all sums under Account Status
+        int runningSum = 0;
+        runningSum += Integer.parseInt(accounts.Get_Account_Status(Customers_Accounts.Account_Status_Types.Open));
+        runningSum += Integer.parseInt(accounts.Get_Account_Status(Customers_Accounts.Account_Status_Types.Closed));
+        // Get the total on the page
+        int totalAcctSum = Integer.parseInt(accounts.Get_Account_Status(Customers_Accounts.Account_Status_Types.All));
+        assertEquals(runningSum, totalAcctSum);
+    }
+    
+    @Test
+    public void verify_Subscription_Status_Calculations(){
+        Customers_Accounts accounts = new Customers_Accounts(driver);
+        
+        // Verify all sums under Suubscription Status
+        int runningSum = 0;
+        runningSum += Integer.parseInt(accounts.Get_Subscription_Status(Customers_Accounts.Subscription_Status_Types.Active));
+        runningSum += Integer.parseInt(accounts.Get_Subscription_Status(Customers_Accounts.Subscription_Status_Types.Renewing));
+        runningSum += Integer.parseInt(accounts.Get_Subscription_Status(Customers_Accounts.Subscription_Status_Types.Non_Renewing));
+        runningSum += Integer.parseInt(accounts.Get_Subscription_Status(Customers_Accounts.Subscription_Status_Types.Future_State_Date));
+        runningSum += Integer.parseInt(accounts.Get_Subscription_Status(Customers_Accounts.Subscription_Status_Types.In_Trial));
+        runningSum += Integer.parseInt(accounts.Get_Subscription_Status(Customers_Accounts.Subscription_Status_Types.Past_Due));
+        runningSum += Integer.parseInt(accounts.Get_Subscription_Status(Customers_Accounts.Subscription_Status_Types.No_Subscription));
+        // Get the total on the page
+        int totalSubSum = Integer.parseInt(accounts.Get_Subscription_Status(Customers_Accounts.Subscription_Status_Types.All));
+        assertEquals(runningSum, totalSubSum);
+    }
 }

@@ -54,6 +54,8 @@ public class Verify_Accounts {
         // To accounts
         accounts.nav_Cust_Accounts();
         // Verify account totals on the page
+        accounts.verify_Account_Status_Calculations();
+        accounts.verify_Subscription_Status_Calculations();
         accounts.verify_Account_Totals();
         // Just for fun naviage to other pages under Customers
         subscriptions.nav_Cust_Subscriptions();
