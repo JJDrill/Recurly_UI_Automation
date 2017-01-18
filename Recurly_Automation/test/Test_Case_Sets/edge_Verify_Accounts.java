@@ -45,7 +45,7 @@ public class edge_Verify_Accounts {
         // To accounts
         accounts.nav_Cust_Accounts();
         // Verify account totals on the page
-        //accounts.verify_Account_Totals();
+        accounts.verify_Account_Totals();
         // Just for fun naviage to other pages under Customers
         subscriptions.nav_Cust_Subscriptions();
         invoices.nav_Cust_Invoices();

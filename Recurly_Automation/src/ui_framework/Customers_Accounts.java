@@ -7,6 +7,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  *
@@ -117,8 +119,15 @@ public class Customers_Accounts extends Common_Page_Functions {
                     Logger.getLogger(Customers_Accounts.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
+                WebElement displayingText = driver.findElement(Accts_Table_Displaying_Tag);
+                WebDriverWait wait = new WebDriverWait(driver, 20);
+                //wait.until(ExpectedConditions.visibilityOf(displayingText));
+                
                 WebElement elmtNextLink = driver.findElement(Accts_Table_Next_Enabled);
                 elmtNextLink.click();
+                
+                // wait for the table to refresh
+                wait.until(ExpectedConditions.stalenessOf(displayingText));
                 
             }else{
                 // no more pages, so let's end it
