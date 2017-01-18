@@ -9,9 +9,9 @@ import ui_framework.Browser;
  *
  * @author J. Drill
  */
-public class ts_Customer_Accounts {
+public class chrome_Verify_Accounts {
     
-    public ts_Customer_Accounts() {
+    public chrome_Verify_Accounts() {
     }
     
     @Test

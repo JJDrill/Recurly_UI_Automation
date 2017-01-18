@@ -98,7 +98,7 @@ public class Customers_Accounts extends Common_Page_Functions {
                 WebElement header = driver.findElement(Status_Acct_Header);
                 
                 /**
-                 * Issue #1: The chat box at the bottom of the page is preventing
+                 * Issue: The chat box at the bottom of the page is preventing
                  * the moveToElement from working, so will hit the end key to
                  * get to the bottom of the page.
                  */
