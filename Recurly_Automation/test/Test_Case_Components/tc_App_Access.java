@@ -47,6 +47,7 @@ public class tc_App_Access {
         
         driver.get("https://app.recurly.com/login");
         Login login = new Login(driver);
+        // Login and load the Get Started page
         Get_Started started = login.loginUser(privateUsername, privatePassword);
         assertEquals(startingTitle, started.Get_Page_Title());
     }

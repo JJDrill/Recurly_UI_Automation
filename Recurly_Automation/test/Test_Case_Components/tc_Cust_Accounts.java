@@ -1,12 +1,5 @@
 package Test_Case_Components;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.openqa.selenium.WebDriver;
@@ -20,8 +13,6 @@ public class tc_Cust_Accounts {
     WebDriver driver = null;
     
     String accountsTitle = "Accounts";
-    String accountsTagStringStart = "Displaying all ";
-    String accountsTagStringEnd = " accounts";
     
     public tc_Cust_Accounts(WebDriver driver) {
         this.driver = driver;
@@ -39,15 +30,11 @@ public class tc_Cust_Accounts {
     @Test
     public void verify_Account_Totals() {
         Customers_Accounts accounts = new Customers_Accounts(driver);
-        
-        String totalAccounts =
-                accounts.Get_Account_Status(Customers_Accounts.Account_Status_Types.All);
-        
+        // Get the account status total
+        String totalAccounts = accounts.Get_Account_Status(Customers_Accounts.Account_Status_Types.All);
+        // Count up all the listed accounts, including any 'next' pages
         String tableCount = String.valueOf(accounts.Get_Accts_Table_Size());
-        
+        // Validate
         assertEquals(totalAccounts, tableCount);
-        
-        assertEquals(accountsTagStringStart + totalAccounts + accountsTagStringEnd,
-                accounts.Get_Accts_Table_Tag());
     }
 }

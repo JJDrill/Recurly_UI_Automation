@@ -1,14 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ui_framework;
 
-import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 /**
  *
@@ -25,6 +23,7 @@ public class Customers_Accounts extends Common_Page_Functions {
     }
     
     // Page Objects - Status
+    By Status_Acct_Header   = By.xpath("/html/body/div[1]/div[2]/div/div/div[3]/div[1]/div[1]/div[1]");
     By Status_Acct_All      = By.xpath("/html/body/div[1]/div[2]/div/div/div[3]/div[1]/div[1]/div[2]/a[1]/span[3]");
     By Status_Acct_Open     = By.xpath("/html/body/div[1]/div[2]/div/div/div[3]/div[1]/div[1]/div[2]/a[2]/span[3]");
     By Status_Acct_Closed   = By.xpath("/html/body/div[1]/div[2]/div/div/div[3]/div[1]/div[1]/div[2]/a[3]/span[3]");
@@ -40,6 +39,7 @@ public class Customers_Accounts extends Common_Page_Functions {
     // Page Objects
     By Accts_Table = By.xpath("/html/body/div[1]/div[2]/div/div/div[3]/div[2]/div/div[1]/div/div[2]/a");
     By Accts_Table_Displaying_Tag = By.xpath("/html/body/div[1]/div[2]/div/div/div[3]/div[2]/div/div[2]/div[1]");
+    By Accts_Table_Next_Enabled = By.xpath("/html/body/div[1]/div[2]/div/div/div[3]/div[2]/div/div[2]/div[2]/div/a[2]");
     
     // Constructor
     public Customers_Accounts(WebDriver driver){
@@ -85,7 +85,47 @@ public class Customers_Accounts extends Common_Page_Functions {
     }
     
     public int Get_Accts_Table_Size(){
-        int numAccounts = driver.findElements(Accts_Table).size();
+        int numAccounts = 0;
+        boolean areMorePages = true;
+        
+        // loop through each page in the results list
+        do {
+            numAccounts += driver.findElements(Accts_Table).size();
+            WebElement nextLink = driver.findElement(Accts_Table_Next_Enabled);
+            
+            // if the 'Next' link is clickable we have a next page
+            if (nextLink.getText().equals("Next")) {
+                WebElement header = driver.findElement(Status_Acct_Header);
+                
+                /**
+                 * Issue #1: The chat box at the bottom of the page is preventing
+                 * the moveToElement from working, so will hit the end key to
+                 * get to the bottom of the page.
+                 */
+                Actions builder = new Actions(driver);
+                builder.moveToElement(header).click().perform();
+                builder.sendKeys(Keys.END).perform();
+                
+                /**
+                 * Should be using WebDriverWait wait here but that is not working
+                 * since there are issues with the chat box at the bottom preventing
+                 * Selenium from being able to click the link.
+                 */
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Customers_Accounts.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                WebElement elmtNextLink = driver.findElement(Accts_Table_Next_Enabled);
+                elmtNextLink.click();
+                
+            }else{
+                // no more pages, so let's end it
+                areMorePages = false;
+            }
+        } while (areMorePages);
+        
         return numAccounts;
     }
     
