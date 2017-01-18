@@ -2,6 +2,8 @@ package ui_framework;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  *
@@ -40,6 +42,9 @@ public class Login {
         this.setUserName(userName);
         this.setPassword(password);
         this.clickLogin();
+        
+        WebDriverWait wait = new WebDriverWait(driver, 15);
+        wait.until(ExpectedConditions.titleIs("Getting Started With Recurly — Recurly"));
         
         return new Get_Started(driver);
     }

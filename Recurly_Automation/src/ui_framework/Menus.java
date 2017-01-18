@@ -2,13 +2,14 @@ package ui_framework;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  *
  * @author J. Drill
  */
 public class Menus {
-    
     WebDriver driver = null;
     
     // Page Objects - Top
@@ -39,24 +40,36 @@ public class Menus {
     public Customers_Accounts Nav_Customers_Accounts(){
         this.Nav_Customers();
         driver.findElement(Customers_Accounts).click();
+        WebDriverWait wait = new WebDriverWait(driver, 15);
+        wait.until(ExpectedConditions.titleIs("Accounts — Recurly"));
         return new Customers_Accounts(driver);
     }
     
     public Customers_Subscriptions Nav_Customers_Subscriptions(){
         this.Nav_Customers();
         driver.findElement(Customers_Subscriptions).click();
+        WebDriverWait wait = new WebDriverWait(driver, 15);
+        wait.until(ExpectedConditions.titleIs("Subscriptions — Recurly"));
         return new Customers_Subscriptions(driver);
     }
     
     public Customers_Invoices Nav_Customers_Invoices(){
         this.Nav_Customers();
         driver.findElement(Customers_Invoices).click();
+        WebDriverWait wait = new WebDriverWait(driver, 15);
+        wait.until(ExpectedConditions.titleIs("Invoices — Recurly"));
         return new Customers_Invoices(driver);
     }
     
     public Customers_Transactions Nav_Customers_Transactions(){
         this.Nav_Customers();
         driver.findElement(Customers_Transactions).click();
+        WebDriverWait wait = new WebDriverWait(driver, 15);
+        wait.until(ExpectedConditions.titleIs("Transactions — Recurly"));
         return new Customers_Transactions(driver);
+    }
+
+    private void WebDriverWait(WebDriver driver, int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
