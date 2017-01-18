@@ -2,6 +2,8 @@ package Test_Case_Sets;
 
 import org.junit.Test;
 import Test_Case_Components.*;
+import org.junit.FixMethodOrder;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebDriver;
 import ui_framework.Browser;
 
@@ -9,13 +11,14 @@ import ui_framework.Browser;
  *
  * @author J. Drill
  */
-public class chrome_Verify_Accounts {
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class Verify_Accounts {
     
-    public chrome_Verify_Accounts() {
+    public Verify_Accounts() {
     }
     
     @Test
-    public void chrome_Verify_Cust_Accounts() {
+    public void Verify_Cust_Accounts_Chrome() {
         // Setup our browser and broswer properties
         Browser browser = new Browser();
         WebDriver driver = browser.Get_Driver(Browser.Browser_Type.CHROME);
@@ -23,6 +26,22 @@ public class chrome_Verify_Accounts {
         browser.Set_Implicit_Wait(driver, 10);
         browser.Set_Page_Timeout(driver, 10);
         
+        this.Verify_Accounts(driver);
+    }
+    
+    @Test
+    public void Verify_Cust_Accounts_Edge() {
+        // Setup our browser and broswer properties
+        Browser browser = new Browser();
+        WebDriver driver = browser.Get_Driver(Browser.Browser_Type.EDGE);
+        browser.Window_Maximize(driver);
+        browser.Set_Implicit_Wait(driver, 10);
+        browser.Set_Page_Timeout(driver, 10);
+        
+        this.Verify_Accounts(driver);
+    }
+    
+    private void Verify_Accounts(WebDriver driver){
         // Load the page objects we're going to use
         tc_App_Access access = new tc_App_Access(driver);
         tc_Cust_Accounts accounts = new tc_Cust_Accounts(driver);
@@ -43,5 +62,4 @@ public class chrome_Verify_Accounts {
         access.logout();
         driver.close();
     }
-    
 }
