@@ -1,4 +1,4 @@
-package Test_Case_Sets;
+package Test_Cases;
 
 import org.junit.Test;
 import Test_Case_Components.*;
