@@ -1,4 +1,4 @@
-# Recurly_Automation
+# Recurly_UI_Automation
 ---
 
 A Selenium-Java project automating the [Recurly UI](https://recurly.com/).
