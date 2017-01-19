@@ -9,3 +9,8 @@ A Selenium-Java project automating the [Recurly UI](https://recurly.com/).
 
 * [Selenium v3 Beta 3](http://www.seleniumhq.org/)
 * Java JDK 1.8
+
+---
+
+## Author
+[J. Drill](https://github.com/JJDrill)
